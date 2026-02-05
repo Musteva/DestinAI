@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DestinAI - How It Works</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gray: {
+              900: '#1a202c',
+              800: '#2d3748',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #f7f9fb;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col dark:bg-slate-900 dark:text-gray-100 transition-colors duration-300">
+  <nav class="bg-white dark:bg-slate-800 shadow-md sticky top-0 z-50 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0">
+          <a href="MainPage.html" class="text-2xl font-extrabold text-indigo-600 dark:text-indigo-400 tracking-wider">
+            DestinAI
+          </a>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="HowItWorks.html"
+              class="text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-slate-700 px-3 py-2 rounded-lg font-medium transition duration-150">
+              How it Works
+            </a>
+            <a href="AboutUs.html"
+              class="text-gray-600 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-slate-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-lg font-medium transition duration-150">
+              About Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow flex justify-center p-4 sm:p-8">
+    <div
+      class="w-full max-w-5xl bg-white dark:bg-slate-800 p-6 sm:p-10 rounded-2xl shadow-xl space-y-12 transition-colors duration-300">
+      <h2 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-4 text-center">
+        How DestinAI Works
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 text-center max-w-3xl mx-auto">
+        Discovering your next destination is simple. DestinAI offers two
+        personalized paths to your perfect trip.
+      </p>
+
+      <div class="space-y-8">
+        <div
+          class="p-6 bg-indigo-50 dark:bg-slate-700 rounded-xl border-l-4 border-indigo-600 dark:border-indigo-400 shadow-md">
+          <p class="text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
+            First, you choose whether you want a random city suggestion or to
+            go to a city based on your own criteria.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div
+            class="feature-card p-6 bg-pink-50 dark:bg-slate-700 rounded-xl shadow-lg border-2 border-pink-200 dark:border-pink-900">
+            <h3 class="text-2xl font-bold text-pink-600 dark:text-pink-400 mb-4">
+              The "I Feel Lucky Today" Flow
+            </h3>
+            <ol class="list-decimal list-inside text-gray-700 dark:text-gray-300 space-y-3 pl-2">
+              <li>
+                If you click the "I feel lucky today" button, our system will
+                suggest a random city from our database.
+              </li>
+              <li>
+                A text box will then appear. Enter information such as your
+                dream vacation and the dates you want to travel.
+              </li>
+              <li>
+                Our system will then provide you with a personalized vacation
+                plan based on this initial random city suggestion and your
+                input.
+              </li>
+            </ol>
+          </div>
+
+          <div
+            class="feature-card p-6 bg-indigo-50 dark:bg-slate-700 rounded-xl shadow-lg border-2 border-indigo-200 dark:border-indigo-900">
+            <h3 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400 mb-4">
+              The "I Want to Choose Myself" Flow
+            </h3>
+            <ol class="list-decimal list-inside text-gray-700 dark:text-gray-300 space-y-3 pl-2">
+              <li>
+                If you want to choose a city based on your own criteria, we
+                will ask you for information such as your budget, vacation
+                schedule (dates), and preferred vacation types.
+              </li>
+              <li>
+                Our AI model will then suggest 3 cities for you. You can
+                choose any of these cities.
+              </li>
+              <li>
+                Finally, a personalized vacation plan will be created for you
+                based on this selected city and your detailed information.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-gray-200 dark:border-gray-700">
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">
+          Key Features
+        </h3>
+        <div class="grid md:grid-cols-2 gap-8">
+
+          <div
+            class="feature-card p-6 rounded-xl shadow-lg bg-green-50 dark:bg-slate-700 border-2 border-green-300 dark:border-green-800 flex items-start space-x-4">
+            <span class="text-4xl text-green-600 dark:text-green-400 mt-1">
+
+              &#10004;
+            </span>
+            <div>
+              <h4 class="text-xl font-bold text-green-700 dark:text-green-400 mb-2">
+                Free to Use
+              </h4>
+              <p class="text-gray-700 dark:text-gray-300">
+                DestinAI is completely free for basic city recommendations and
+                lucky draws. Get started planning your adventure without any
+                cost!
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="feature-card p-6 rounded-xl shadow-lg bg-indigo-50 dark:bg-slate-700 border-2 border-indigo-300 dark:border-indigo-800 flex items-start space-x-4">
+            <span class="text-4xl text-indigo-600 dark:text-indigo-400 mt-1">
+
+              &#9881;
+            </span>
+            <div>
+              <h4 class="text-xl font-bold text-indigo-700 dark:text-indigo-400 mb-2">
+                AI-Powered Recommendations
+              </h4>
+              <p class="text-gray-700 dark:text-gray-300">
+                Our platform leverages an advanced AI model to analyze your
+                preferences (budget, dates, holiday types) and suggest the
+                best cities tailored just for you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="js/theme-toggle.js"></script>
+</body>
+
+</html>

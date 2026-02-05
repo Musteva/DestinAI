@@ -1,0 +1,13 @@
+WIP/
+changelogs/
+instructions_for_gemini.txt
+__pycache__/
+*.pyc
+.env
+.pytest_cache/
+venv/
+node_modules/
+.DS_Store
+backend/__pycache__/
+backend/.pytest_cache/
+backend/.env

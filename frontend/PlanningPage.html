@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>DestinAI - Plan</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gray: {
+              900: '#1a202c',
+              800: '#2d3748',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap");
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #f7f9fb;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .selected {
+      background-color: #4f46e5 !important;
+
+      color: white !important;
+      border-color: #4f46e5 !important;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col dark:bg-slate-900 dark:text-gray-100 transition-colors duration-300">
+  <nav class="bg-white dark:bg-slate-800 shadow-sm p-4 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto flex justify-between">
+      <a href="MainPage.html" class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">DestinAI</a>
+    </div>
+  </nav>
+
+  <main class="flex-grow flex justify-center p-8">
+    <div class="w-full max-w-4xl bg-white dark:bg-slate-800 p-10 rounded-3xl shadow-xl transition-colors duration-300">
+      <h2 class="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">Plan Your Trip</h2>
+
+      <form id="planningForm" class="space-y-8">
+
+        <div>
+          <label class="block text-lg font-semibold mb-3 text-gray-700 dark:text-gray-200">1. Budget Level</label>
+          <div class="flex gap-4">
+            <button type="button"
+              class="budget-btn border-2 px-6 py-2 rounded-full text-gray-600 dark:text-gray-300 border-gray-200 dark:border-slate-600 hover:border-indigo-500 dark:hover:border-indigo-400 transition"
+              data-val="1">
+              Low ($)
+            </button>
+            <button type="button"
+              class="budget-btn border-2 px-6 py-2 rounded-full text-gray-600 dark:text-gray-300 border-gray-200 dark:border-slate-600 hover:border-indigo-500 dark:hover:border-indigo-400 transition"
+              data-val="2">
+              Medium ($$)
+            </button>
+            <button type="button"
+              class="budget-btn border-2 px-6 py-2 rounded-full text-gray-600 dark:text-gray-300 border-gray-200 dark:border-slate-600 hover:border-indigo-500 dark:hover:border-indigo-400 transition"
+              data-val="3">
+              High ($$$)
+            </button>
+          </div>
+
+          <input type="hidden" id="budgetInput" />
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-1">
+            <label class="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-200">Start</label><input
+              type="date" id="start"
+              class="w-full p-3 border rounded-lg bg-white dark:bg-slate-700 dark:text-white dark:border-slate-600 focus:ring-indigo-500 focus:border-indigo-500" />
+          </div>
+          <div class="flex-1">
+            <label class="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-200">End</label><input
+              type="date" id="end"
+              class="w-full p-3 border rounded-lg bg-white dark:bg-slate-700 dark:text-white dark:border-slate-600 focus:ring-indigo-500 focus:border-indigo-500" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-lg font-semibold mb-3 text-gray-700 dark:text-gray-200">3. Interests</label>
+          <div class="flex flex-wrap gap-3" id="interestContainer">
+
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-lg font-semibold mb-3 text-gray-700 dark:text-gray-200">4. Describe Your
+            Dream</label>
+          <textarea id="prompt" rows="3"
+            class="w-full p-3 border rounded-lg bg-white dark:bg-slate-700 dark:text-white dark:border-slate-600 focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+        </div>
+
+        <button type="submit"
+          class="w-full bg-pink-500 text-white font-bold py-4 rounded-xl hover:bg-pink-600 transition shadow-lg">
+          Find Destinations
+        </button>
+      </form>
+    </div>
+  </main>
+  <script src="js/config.js"></script>
+  <script src="js/theme-toggle.js"></script>
+
+  <script>
+    const interests = [
+      "culture",
+      "adventure",
+      "nature",
+      "beaches",
+      "nightlife",
+      "cuisine",
+      "wellness",
+      "urban",
+      "seclusion",
+    ];
+
+    const prefs = {};
+    interests.forEach((i) => (prefs[i] = 0));
+
+    const container = document.getElementById("interestContainer");
+
+    interests.forEach((i) => {
+      const btn = document.createElement("button");
+      btn.className =
+        "border-2 border-gray-200 dark:border-slate-600 px-4 py-2 rounded-full text-gray-600 dark:text-gray-300 hover:border-indigo-300 dark:hover:border-indigo-400 transition";
+
+      btn.textContent = i.charAt(0).toUpperCase() + i.slice(1);
+      btn.type = "button";
+
+      btn.onclick = () => {
+        prefs[i] = prefs[i] === 0 ? 1 : 0;
+        btn.classList.toggle("selected");
+      };
+      container.appendChild(btn);
+    });
+
+    document.querySelectorAll(".budget-btn").forEach((btn) => {
+      btn.onclick = () => {
+
+        document
+          .querySelectorAll(".budget-btn")
+          .forEach((b) => b.classList.remove("selected"));
+
+        btn.classList.add("selected");
+
+        document.getElementById("budgetInput").value = btn.dataset.val;
+      };
+    });
+
+    document.getElementById("planningForm").onsubmit = (e) => {
+      e.preventDefault();
+
+      const budget = document.getElementById("budgetInput").value;
+      const start = document.getElementById("start").value;
+      const end = document.getElementById("end").value;
+
+      if (!budget || !start || !end)
+        return alert("Please fill all required fields");
+
+      const sDate = new Date(start);
+      const eDate = new Date(end);
+
+      const diffDays =
+        Math.ceil(Math.abs(eDate - sDate) / (1000 * 60 * 60 * 24)) + 1;
+
+      let durationCat = "Shorttrip";
+      if (diffDays > 7) {
+        durationCat = "Longtrip";
+      }
+
+      const month = String(sDate.getMonth() + 1).padStart(2, "0");
+
+      const payload = {
+
+        model_input: {
+          budget_levl: parseInt(budget),
+          ideal_durations: [durationCat], // Muss als Array übergeben werden
+          best_months: [month], // Muss als Array übergeben werden
+          ...prefs, // Spread-Operator fügt alle binären Interessen hinzu
+        },
+        userPrompt: document.getElementById("prompt").value,
+        dates: { start, end },
+      };
+
+      localStorage.setItem("userPreferences", JSON.stringify(payload));
+
+      window.location.href = "RecommendationsPage.html";
+    };
+  </script>
+</body>
+
+</html>

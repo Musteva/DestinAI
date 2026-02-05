@@ -1,0 +1,94 @@
+<!-- START OF FILE MainPage.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Standard Meta-Tags für Charset und Responsive Viewport -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DestinAI - Main</title>
+
+  <!-- Einbindung von Tailwind CSS über CDN für schnelles Utility-First Styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gray: {
+              900: '#1a202c',
+              800: '#2d3748',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Globale Styles und Font-Importe -->
+  <style>
+    /* Import der 'Inter' Schriftart von Google Fonts */
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap");
+
+    /* Basis-Styling für den Body */
+    body {
+      font-family: "Inter", sans-serif;
+      /* Default light background, handled by Tailwind classes on body element generally, but keeping fallback */
+      background-color: #f8fafc;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+  </style>
+</head>
+
+<!-- Flex-Container mit min-h-screen sorgt dafür, dass der Footer (falls vorhanden) immer unten bleibt -->
+
+<body class="min-h-screen flex flex-col dark:bg-slate-900 dark:text-gray-100 transition-colors duration-300">
+  <!-- Navigationsleiste -->
+  <nav
+    class="bg-white dark:bg-slate-800 border-b border-gray-100 dark:border-slate-700 p-4 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <!-- Logo / Home-Link -->
+      <a href="MainPage.html" class="text-2xl font-black text-indigo-600 dark:text-indigo-400">DestinAI</a>
+      <!-- Desktop-Navigation (wird auf mobilen Geräten ausgeblendet: hidden md:block) -->
+      <div class="hidden md:block space-x-6">
+        <a href="HowItWorks.html"
+          class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">How it Works</a><a
+          href="AboutUs.html"
+          class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">About Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hauptinhalt (Hero Section) -->
+  <!-- flex-grow stellt sicher, dass dieser Bereich den verfügbaren Platz einnimmt -->
+  <main class="flex-grow flex items-center justify-center p-4">
+    <div class="text-center max-w-4xl">
+      <!-- Hauptüberschrift mit responsivem Text-Size und Highlighting -->
+      <h1 class="text-5xl md:text-7xl font-black text-gray-900 dark:text-white mb-8 tracking-tight">
+        Do you plan or <span class="text-indigo-600 dark:text-indigo-400">go with the flow?</span>
+      </h1>
+
+      <!-- Button-Container: Flex-Col auf Mobile, Flex-Row auf größeren Screens -->
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <!-- Button 1: Navigiert zur detaillierten Planungsseite -->
+        <!-- Verwendung von Inline-JS für einfaches Routing -->
+        <button onclick="window.location.href='PlanningPage.html'"
+          class="bg-indigo-600 dark:bg-indigo-500 text-white font-bold py-4 px-8 rounded-full shadow-xl hover:scale-105 transition">
+          I Want to Choose Myself
+        </button>
+
+        <!-- Button 2: Navigiert zur Zufallsgenerator-Seite (Lucky Page) -->
+        <button onclick="window.location.href='LuckyPage.html'"
+          class="bg-white dark:bg-slate-800 border-2 border-pink-500 dark:border-pink-400 text-pink-500 dark:text-pink-400 font-bold py-4 px-8 rounded-full shadow-xl hover:scale-105 transition">
+          I Feel Lucky Today! 🎲
+        </button>
+      </div>
+    </div>
+  </main>
+  <script src="js/config.js"></script>
+  <script src="js/theme-toggle.js"></script>
+</body>
+
+</html>
